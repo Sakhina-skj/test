@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kahinath Jalan Automobiles</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="wrap" id="wrap">
+
+  <div id="s1" class="screen active">
+    <div class="card">
+      <h1>Kashinath Jalan Automobiles</h1>
+      <p class="sub">DSE Telecaller & Receptionist Test</p>
+    </div>
+  </div>
+
+  <div id="s2" class="screen">
+    <div class="card">
+      <h2 class="heading">Test Details</h2>
+      <div class="info-row">
+        <div class="info-box">
+          <div class="val">15</div>
+          <div class="lbl">Questions</div>
+        </div>
+        <div class="info-box">
+          <div class="val">8</div>
+          <div class="lbl">Minutes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s3" class="screen">
+    <div class="start-wrap">
+      <p class="start-text">Ready to begin?</p>
+      <button class="start-btn" id="startBtn">Start Test ▶</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <div class="center">
+    <div class="clock">
+      <div id="hand" class="hand"></div>
+    </div>
+
+    <div id="timer" class="timer">08:00</div>
+    <div class="expr-label" id="exprLabel">Happy</div>
+  </div>
+
+  <!-- AVATARS -->
+  <div id="avatars"></div>
+
+  <div class="progress-bar" id="progress"></div>
+
+</div>
+
+<!-- 🔊 TICK SOUND -->
+<audio id="tickSound" src="tick.mp3" loop></audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>
