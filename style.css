@@ -177,3 +177,42 @@ body{
   75%  { transform: translate(var(--x), var(--y)) translate(2px,2px); }
   100% { transform: translate(var(--x), var(--y)) translate(0,0); }
 }
+
+/* 🎉 POPPER */
+.popper{
+  position:fixed;
+  width:0;
+  height:0;
+  pointer-events:none;
+  z-index:999;
+}
+
+.popper.top-left{ top:0; left:0; }
+.popper.top-right{ top:0; right:0; }
+.popper.bottom-left{ bottom:0; left:0; }
+.popper.bottom-right{ bottom:0; right:0; }
+
+/* CONFETTI */
+.confetti{
+  position:absolute;
+  width:8px;
+  height:14px;
+  opacity:0.9;
+  animation: fall 2s linear forwards;
+}
+
+.confetti:nth-child(odd){ background:#00ffd5; }
+.confetti:nth-child(even){ background:#ff4d4d; }
+.confetti:nth-child(3n){ background:#ffd700; }
+.confetti:nth-child(4n){ background:#4caf50; }
+
+@keyframes fall{
+  0%{
+    transform:translate(0,0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translate(var(--x), var(--y)) rotate(720deg);
+    opacity:0;
+  }
+}
