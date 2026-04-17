@@ -80,7 +80,7 @@ function startTimer(){
   let tick = document.getElementById("tickSound");
   tick.pause();
   tick.currentTime = 0;
-
+  document.getElementById("timeUpScreen").classList.add("show");
   return;
 }
 
