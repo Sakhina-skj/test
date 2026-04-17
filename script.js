@@ -71,14 +71,7 @@ function updateEmotion(min){
 // TIMER
 function startTimer(){
 
-  interval = setInterval((if(remaining <= 0){
-  clearInterval(timerInterval);
-  document.getElementById('timerEl').textContent = '00:00';
-  document.getElementById('timerEl').classList.add('done');
-  document.getElementById('progress').style.width = '0%';
-  stopShake(); // yeh add karo
-  return;
-})=>{
+  interval = setInterval(())=>{
 
     if(total <= 0){
   clearInterval(interval);
