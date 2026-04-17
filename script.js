@@ -22,11 +22,14 @@ document.getElementById("startBtn").onclick = ()=>{
   document.getElementById("wrap").style.display="none";
   main.style.display="block";
 
-  tick.currentTime = 0;
-  tick.play();
+  launchPopper(); // 🎉 ADD
 
+  let tick = document.getElementById("tickSound");
+  tick.play(); // ▶️ START SOUND
+  tick.currentTime = 0;
   startTimer();
 };
+  
 
 // TIMER
 let total = 480;
@@ -71,13 +74,15 @@ function startTimer(){
   interval = setInterval(()=>{
 
     if(total <= 0){
-      clearInterval(interval);
-      timerEl.innerText = "00:00";
-      startShake();
-      showTimeUp();
-      tick.pause();
-      return;
-    }
+  clearInterval(interval);
+  timerEl.innerText = "00:00";
+
+  let tick = document.getElementById("tickSound");
+  tick.pause();
+  tick.currentTime = 0;
+
+  return;
+}
 
     let m = Math.floor(total/60);
     let s = total%60;
