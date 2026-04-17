@@ -71,7 +71,7 @@ function updateEmotion(min){
 // TIMER
 function startTimer(){
 
-  interval = setInterval(())=>{
+  interval = setInterval(()=>{
 
     if(total <= 0){
   clearInterval(interval);
