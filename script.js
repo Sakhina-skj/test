@@ -71,7 +71,14 @@ function updateEmotion(min){
 // TIMER
 function startTimer(){
 
-  interval = setInterval(()=>{
+  interval = setInterval((if(remaining <= 0){
+  clearInterval(timerInterval);
+  document.getElementById('timerEl').textContent = '00:00';
+  document.getElementById('timerEl').classList.add('done');
+  document.getElementById('progress').style.width = '0%';
+  stopShake(); // yeh add karo
+  return;
+})=>{
 
     if(total <= 0){
   clearInterval(interval);
@@ -150,15 +157,44 @@ for(let i=1;i<=8;i++){
 }
 
 // SHAKE
-function startShake(){
-  document.querySelectorAll(".avatar")
-    .forEach(a=>a.classList.add("shake"));
+function startShake() {
+  avatarEls.forEach(el => {
+    const baseTransform = el.style.transform || '';
+    el.dataset.baseTransform = baseTransform;
+
+    const id = 'shake_' + el.id;
+    const existing = document.getElementById(id);
+    if (existing) existing.remove();
+
+    const style = document.createElement('style');
+    style.id = id;
+    style.textContent = `
+      @keyframes ${id} {
+        0%,100% { transform: ${baseTransform} translate(0,0) rotate(0deg); }
+        15%     { transform: ${baseTransform} translate(-4px,-3px) rotate(-1deg); }
+        30%     { transform: ${baseTransform} translate(4px,2px) rotate(1deg); }
+        45%     { transform: ${baseTransform} translate(-5px,1px) rotate(-0.5deg); }
+        60%     { transform: ${baseTransform} translate(5px,-2px) rotate(1deg); }
+        75%     { transform: ${baseTransform} translate(-3px,3px) rotate(-1deg); }
+        90%     { transform: ${baseTransform} translate(3px,-1px) rotate(0.5deg); }
+      }
+    `;
+    document.head.appendChild(style);
+    el.style.animation = `${id} 0.45s ease-in-out infinite`;
+  });
 }
 
-function stopShake(){
-  document.querySelectorAll(".avatar")
-    .forEach(a=>a.classList.remove("shake"));
+function stopShake() {
+  avatarEls.forEach(el => {
+    el.style.animation = 'none';
+    if (el.dataset.baseTransform !== undefined) {
+      el.style.transform = el.dataset.baseTransform;
+    }
+    const s = document.getElementById('shake_' + el.id);
+    if (s) s.remove();
+  });
 }
+
 function launchPopper(){
   const corners = ["top-left","top-right","bottom-left","bottom-right"];
 
