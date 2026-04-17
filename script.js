@@ -154,3 +154,27 @@ function stopShake(){
   document.querySelectorAll(".avatar")
     .forEach(a=>a.classList.remove("shake"));
 }
+function launchPopper(){
+  const corners = ["top-left","top-right","bottom-left","bottom-right"];
+
+  let popperInterval = setInterval(()=>{
+    corners.forEach(pos=>{
+      let container = document.querySelector(".popper."+pos);
+
+      for(let i=0;i<10;i++){
+        let conf = document.createElement("div");
+        conf.className="confetti";
+
+        conf.style.setProperty("--x", (Math.random()*300-150)+"px");
+        conf.style.setProperty("--y", (Math.random()*300+100)+"px");
+
+        container.appendChild(conf);
+      }
+    });
+  },300);
+
+  setTimeout(()=>{
+    clearInterval(popperInterval);
+    document.querySelectorAll(".popper").forEach(e=>e.innerHTML="");
+  },120000); // 2 min
+                                       }
