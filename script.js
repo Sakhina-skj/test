@@ -171,7 +171,14 @@ function launchPopper(){
         conf.className="confetti";
 
         conf.style.setProperty("--x", (Math.random()*300-150)+"px");
-        conf.style.setProperty("--y", (Math.random()*300+100)+"px");
+
+if(pos.includes("bottom")){
+  // bottom se upar ki taraf
+  conf.style.setProperty("--y", (-Math.random()*300-100)+"px");
+}else{
+  // top se neeche ki taraf
+  conf.style.setProperty("--y", (Math.random()*300+100)+"px");
+}
 
         container.appendChild(conf);
       }
