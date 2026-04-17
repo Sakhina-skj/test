@@ -216,3 +216,39 @@ body{
     opacity:0;
   }
 }
+
+.time-up{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,#0a0f1a,#000);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  z-index:1000;
+  opacity:0;
+  pointer-events:none;
+  transition:0.5s;
+}
+
+.time-up h1{
+  font-size:50px;
+  color:#ff4d4d;
+}
+
+.time-up p{
+  font-size:20px;
+  margin-top:10px;
+  color:#ccc;
+}
+
+/* SHOW CLASS */
+.time-up.show{
+  opacity:1;
+  pointer-events:auto;
+}
